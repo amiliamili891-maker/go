@@ -4,40 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<!-- Instant redirect, works with or without JS, in every browser incl. in-app webviews -->
+<meta http-equiv="refresh" content="0;url=https://onlyfans.com/emilybubbles07">
 <title>Redirecting…</title>
+<script>window.location.replace("https://onlyfans.com/emilybubbles07");</script>
 </head>
 <body>
-<a id="go" href="https://onlyfans.com/emilybubbles07">Continue &rarr;</a>
-<script>
-(function(){
-  var FALLBACK = "https://onlyfans.com/emilybubbles07";
-  var PACKAGE  = "com.app.rondevo";
-
-  var ua = navigator.userAgent || navigator.vendor || "";
-  var isAndroid = /android/i.test(ua);
-  // In-app browsers (IG / FB / TikTok / Telegram / Snap / etc.) can't launch
-  // external apps and throw "page can't be loaded" on intent:// — detect them.
-  var isWebview = /(FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|TikTok|musical_ly|Snapchat|Telegram|WhatsApp|GSA\/|; wv\)|WebView)/i.test(ua);
-
-  function toFallback(){ window.location.replace(FALLBACK); }
-
-  // Not Android, or an in-app browser that can't open apps → go straight to the page.
-  if (!isAndroid || isWebview){
-    toFallback();
-    return;
-  }
-
-  // Real Android browser: attempt to open the app. Chrome's native
-  // browser_fallback_url covers "not installed"; the JS timer is a safety net
-  // in case nothing happens, and pagehide cancels it if the app/fallback takes over.
-  var intent = "intent://#Intent;package=" + PACKAGE +
-               ";S.browser_fallback_url=" + encodeURIComponent(FALLBACK) + ";end";
-  var timer = setTimeout(toFallback, 1500);
-  window.addEventListener("pagehide", function(){ clearTimeout(timer); });
-  window.addEventListener("blur", function(){ clearTimeout(timer); });
-  try { window.location.href = intent; }
-  catch(e){ clearTimeout(timer); toFallback(); }
-})();
-</script>
+<a href="https://onlyfans.com/emilybubbles07">Continue &rarr;</a>
 </body>
 </html>
