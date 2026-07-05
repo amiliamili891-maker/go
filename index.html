@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Redirecting…</title>
+<script>
+(function(){
+  var FALLBACK = "https://onlyfans.com/emilybubbles07";
+  var PACKAGE  = "com.app.rondevo";
+  // Android: open the app by package if installed; Chrome auto-loads the
+  // fallback URL if it isn't. No custom scheme needed.
+  var ANDROID_INTENT =
+    "intent://#Intent;package=" + PACKAGE +
+    ";S.browser_fallback_url=" + encodeURIComponent(FALLBACK) + ";end";
+
+  var ua = navigator.userAgent || navigator.vendor || "";
+  var isAndroid = /android/i.test(ua);
+
+  if (isAndroid){
+    window.location.href = ANDROID_INTENT;
+  } else {
+    // iOS / desktop: no verified way to open the app — go straight to fallback.
+    window.location.replace(FALLBACK);
+  }
+})();
+</script>
+</head>
+<body>
+<!-- Safety net for in-app browsers that block automatic app launches -->
+<noscript><meta http-equiv="refresh" content="0;url=https://onlyfans.com/emilybubbles07"></noscript>
+<a id="m" href="https://onlyfans.com/emilybubbles07">Continue</a>
+<script>
+  var a=document.getElementById("m");
+  if(/android/i.test(navigator.userAgent||"")){
+    a.href="intent://#Intent;package=com.app.rondevo;S.browser_fallback_url="+
+      encodeURIComponent("https://onlyfans.com/emilybubbles07")+";end";
+  }
+</script>
+</body>
+</html>
