@@ -5,38 +5,39 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Redirecting…</title>
+</head>
+<body>
+<a id="go" href="https://onlyfans.com/emilybubbles07">Continue &rarr;</a>
 <script>
 (function(){
   var FALLBACK = "https://onlyfans.com/emilybubbles07";
   var PACKAGE  = "com.app.rondevo";
-  // Android: open the app by package if installed; Chrome auto-loads the
-  // fallback URL if it isn't. No custom scheme needed.
-  var ANDROID_INTENT =
-    "intent://#Intent;package=" + PACKAGE +
-    ";S.browser_fallback_url=" + encodeURIComponent(FALLBACK) + ";end";
 
   var ua = navigator.userAgent || navigator.vendor || "";
   var isAndroid = /android/i.test(ua);
+  // In-app browsers (IG / FB / TikTok / Telegram / Snap / etc.) can't launch
+  // external apps and throw "page can't be loaded" on intent:// — detect them.
+  var isWebview = /(FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|TikTok|musical_ly|Snapchat|Telegram|WhatsApp|GSA\/|; wv\)|WebView)/i.test(ua);
 
-  if (isAndroid){
-    window.location.href = ANDROID_INTENT;
-  } else {
-    // iOS / desktop: no verified way to open the app — go straight to fallback.
-    window.location.replace(FALLBACK);
+  function toFallback(){ window.location.replace(FALLBACK); }
+
+  // Not Android, or an in-app browser that can't open apps → go straight to the page.
+  if (!isAndroid || isWebview){
+    toFallback();
+    return;
   }
+
+  // Real Android browser: attempt to open the app. Chrome's native
+  // browser_fallback_url covers "not installed"; the JS timer is a safety net
+  // in case nothing happens, and pagehide cancels it if the app/fallback takes over.
+  var intent = "intent://#Intent;package=" + PACKAGE +
+               ";S.browser_fallback_url=" + encodeURIComponent(FALLBACK) + ";end";
+  var timer = setTimeout(toFallback, 1500);
+  window.addEventListener("pagehide", function(){ clearTimeout(timer); });
+  window.addEventListener("blur", function(){ clearTimeout(timer); });
+  try { window.location.href = intent; }
+  catch(e){ clearTimeout(timer); toFallback(); }
 })();
-</script>
-</head>
-<body>
-<!-- Safety net for in-app browsers that block automatic app launches -->
-<noscript><meta http-equiv="refresh" content="0;url=https://onlyfans.com/emilybubbles07"></noscript>
-<a id="m" href="https://onlyfans.com/emilybubbles07">Continue</a>
-<script>
-  var a=document.getElementById("m");
-  if(/android/i.test(navigator.userAgent||"")){
-    a.href="intent://#Intent;package=com.app.rondevo;S.browser_fallback_url="+
-      encodeURIComponent("https://onlyfans.com/emilybubbles07")+";end";
-  }
 </script>
 </body>
 </html>
